@@ -1,0 +1,76 @@
+package com.example.android.ballyeagaa;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.ImageSwitcher;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
+import android.widget.ViewSwitcher.ViewFactory;
+
+/**
+ * Created by jbbpc_000 on 27/06/2015.
+ */
+public class HomeFragment extends Activity {
+
+    private Integer images [] = {R.drawable.img1, R.drawable.img2, R.drawable.img3};
+    private int currImage = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_home);
+
+        initializeImageSwitcher();
+        setInitialImage();
+        setImageRotateListener();
+
+    }
+
+    private void initializeImageSwitcher() {
+        final ImageSwitcher imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+        imageSwitcher.setFactory(new ViewFactory() {
+            @Override
+            public View makeView() {
+                ImageView imageView = new ImageView(HomeFragment.this);
+                return imageView;
+            }});
+
+        imageSwitcher.setInAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_in_left));
+        imageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(this, android.R.anim.slide_out_right));
+
+    }
+
+    private void setImageRotateListener() {
+        final Button rotatebutton = (Button) findViewById(R.id.btnRotateImage);
+        rotatebutton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                currImage++;
+                if(currImage == 3) {
+                    currImage = 0;
+                }
+                setCurrentImage();
+            }
+        });
+    }
+
+    private void setInitialImage() {
+        setCurrentImage();
+    }
+
+    private void setCurrentImage() {
+        final ImageSwitcher imageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+        imageSwitcher.setImageResource(images[currImage]);
+    }
+
+
+}
