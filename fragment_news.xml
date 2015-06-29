@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/amber"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Clare down to play Offaly Next Weekend"
+        android:textSize="22sp"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@color/white"
+        android:text="Ballyea GAA funrun 2015"
+        android:textSize="30sp"
+        />
+
+
+</LinearLayout>
